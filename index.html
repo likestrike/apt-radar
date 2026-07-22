@@ -1,0 +1,156 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APT 레이더</title>
+<link rel="stylesheet" href="styles.css" />
+<h1>APT 레이더</h1>
+<div id="stale" class="stale">이 데이터는 오래되었을 수 있음(마지막 수집 실패/지연).</div>
+<p id="updated"></p>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-scope="노원구">노원</div>
+  <div class="tab" data-scope="동대문구">동대문(회기)</div>
+  <div class="tab" data-scope="다산동">다산</div>
+  <div class="tab" data-scope="남양주기타">남양주</div>
+  <div class="tab" data-scope="하남시">하남</div>
+</div>
+<div id="listings"></div>
+
+<h2>LH 공공분양</h2>
+<p id="lhFailed" class="stale" style="display:none;">LH 공고 수집 실패 — 목록이 최신이 아닐 수 있음</p>
+<div id="lh"></div>
+
+<h2>금리 시나리오 계산기 (브라우저 메모리만, 저장·전송 없음)</h2>
+<label>금리 <input id="rate" type="range" min="3" max="8" step="0.1" value="4.5" /><span id="rateVal">4.5%</span></label><br />
+<label>소득(만원) <input id="income" type="number" placeholder="연소득 입력(만원)" /></label>
+<label>자기자본(만원) <input id="equity" type="number" placeholder="자기자본 입력(만원)" /></label>
+<label>매물가(만원) <input id="price" type="number" value="55000" /></label>
+<div id="calcOut" class="card"></div>
+
+<script src="calc.js"></script>
+<script>
+async function loadJSON(path) {
+  const r = await fetch(path, { cache: "no-store" });
+  return r.json();
+}
+
+function fmt(won) { return Math.round(won / 10000).toLocaleString() + "만원"; }
+
+// esc()/safeUrl()은 calc.js가 제공(module.exports 및 전역 함수 선언 겸용).
+
+async function main() {
+  const staleEl = document.getElementById("stale");
+
+  // 일부 실패해도 성공분은 렌더한다 — Promise.all 대신 allSettled.
+  const [listingsResult, lhResult, metaResult, eventsResult] = await Promise.allSettled([
+    loadJSON("data/listings.json"),
+    loadJSON("data/lh.json"),
+    loadJSON("data/meta.json"),
+    loadJSON("data/events/latest.json"),
+  ]);
+
+  const listings = listingsResult.status === "fulfilled" ? listingsResult.value : [];
+  const lh = lhResult.status === "fulfilled" ? lhResult.value : [];
+  const meta = metaResult.status === "fulfilled" ? metaResult.value : {};
+  const events = eventsResult.status === "fulfilled"
+    ? eventsResult.value
+    : { new: [], priceChanged: [], removed: [] };
+
+  const allFailed = [listingsResult, lhResult, metaResult, eventsResult]
+    .every((r) => r.status === "rejected");
+
+  document.getElementById("updated").textContent = "마지막 갱신: " + (meta.updated_at || "-");
+  if (allFailed) {
+    // 전체 실패 시에만 배너 문구를 갈아끼운다.
+    staleEl.textContent = "데이터를 불러오지 못했습니다.";
+    staleEl.style.display = "block";
+  } else if (listingsResult.status === "rejected") {
+    // listings.json만 실패(예: meta는 성공)해도 "신선함(마지막 갱신 표시)"과 빈 매물
+    // 목록이 함께 보이는 오해의 소지가 있는 화면을 막기 위해 별도 안내를 띄운다(리뷰 Minor).
+    staleEl.textContent = "매물 데이터를 불러오지 못했습니다.";
+    staleEl.style.display = "block";
+  } else if (meta.blocked || meta.stale) {
+    staleEl.style.display = "block";
+  }
+
+  // LH 실패는 네이버/전체 오래됨 배너와 별개 표시(meta.lh_failed) — 정적 문자열, esc 불필요.
+  if (meta.lh_failed) {
+    document.getElementById("lhFailed").style.display = "block";
+  }
+
+  // events/latest.json 실패는 비치명 — 배지 없이 나머지는 정상 렌더.
+  const newSet = new Set(events.new || []);
+  const priceChangedMap = new Map((events.priceChanged || []).map((e) => [e.articleNo, e]));
+
+  function renderScope(scope) {
+    const box = document.getElementById("listings");
+    box.innerHTML = "";
+    listings.filter((l) => l.scope === scope).forEach((l) => {
+      const div = document.createElement("div");
+      div.className = "card";
+      const badges = [];
+      if (newSet.has(l.articleNo)) {
+        badges.push(`<span class="badge badge-new">신규</span>`);
+      }
+      const pc = priceChangedMap.get(l.articleNo);
+      if (pc) {
+        badges.push(
+          `<span class="badge badge-price">가격변동 ${esc(fmt(pc.before))}→${esc(fmt(pc.after))}</span>`
+        );
+      }
+      const fin = l.finance.map((f) =>
+        `${esc(f.product)}: 최대 대출(규제 한도 기준) ${fmt(f.loan)} · 월상환 ${fmt(f.monthly_payment)} · 필요 자기자본 ${fmt(f.cash_needed)}`
+      ).join("<br />");
+      const acts = (l.actionItems || []).map((a) => esc(a.text)).join("<br />");
+      div.innerHTML = `${badges.join(" ")}<b>${esc(l.complexName)}</b> ${fmt(l.price)} (${esc(l.area)}㎡)
+        <a href="${esc(safeUrl(l.sourceUrl))}" target="_blank" rel="noopener">원본</a><br />${fin}<br />${acts}
+        <br /><small>개인 소득 반영 한도는 아래 계산기에서 확인</small>`;
+      box.appendChild(div);
+    });
+  }
+
+  document.getElementById("lh").innerHTML = lh.map((n) =>
+    `<div class="card"><b>${esc(n.name)}</b> D-${esc(n.dday ?? "?")}
+     <a href="${esc(safeUrl(n.detail_url))}" target="_blank" rel="noopener">공고</a></div>`
+  ).join("");
+
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      renderScope(tab.dataset.scope);
+    });
+  });
+  renderScope("노원구");
+
+  function recalc() {
+    const rate = parseFloat(document.getElementById("rate").value) / 100;
+    document.getElementById("rateVal").textContent = (rate * 100).toFixed(1) + "%";
+    const incomeRaw = document.getElementById("income").value;
+    const priceRaw = document.getElementById("price").value;
+    const income = parseInt(incomeRaw, 10) * 10000;
+    const price = parseInt(priceRaw, 10) * 10000;
+    if (incomeRaw === "" || priceRaw === "" || Number.isNaN(income) || Number.isNaN(price)) {
+      document.getElementById("calcOut").textContent = "입력값을 확인하세요";
+      return;
+    }
+    const r = renderScenario(income, rate, price, 0.70);
+    let out = `필요 대출 ${fmt(r.loan)} · 월상환 ${fmt(r.monthlyPayment)}`;
+
+    // 자기자본 입력이 있을 때만 여유/부족 한 줄 추가(브라우저 메모리만, 저장·전송 없음).
+    const equityRaw = document.getElementById("equity").value;
+    if (equityRaw !== "") {
+      const equity = parseInt(equityRaw, 10) * 10000;
+      if (!Number.isNaN(equity)) {
+        const gap = equity - r.cashNeeded;
+        const label = gap >= 0 ? "여유" : "부족";
+        out += `<br />자기자본 대비: ${label} ${fmt(Math.abs(gap))}`;
+      }
+    }
+    document.getElementById("calcOut").innerHTML = out;
+  }
+  ["rate", "income", "equity", "price"].forEach((id) =>
+    document.getElementById(id).addEventListener("input", recalc));
+  recalc();
+}
+main();
+</script>
