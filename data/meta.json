@@ -1,0 +1,18 @@
+{
+  "updated_at": "2026-07-22T17:25:23.146551+09:00",
+  "collected_scopes": [
+    "남양주기타",
+    "노원구",
+    "다산동",
+    "동대문구",
+    "하남시"
+  ],
+  "blocked": false,
+  "stale": false,
+  "lh_failed": true,
+  "counts": {
+    "new": 5974,
+    "price_changed": 0,
+    "lh": 0
+  }
+}
