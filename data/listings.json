@@ -48190,106 +48190,6 @@
     ]
   },
   {
-    "articleNo": "2638283662",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "양지",
-    "area": 84.0,
-    "price": 190000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/8571",
-    "near6eok": false,
-    "costs": 9926000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 133000000,
-        "monthly_payment": 673891,
-        "cash_needed": 66926000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 133000000,
-        "monthly_payment": 705867,
-        "cash_needed": 66926000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 13,300만원 / 월상환 67만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 13,300만원 / 월상환 70만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
-    "articleNo": "2638124193",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "양지",
-    "area": 84.0,
-    "price": 190000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/8571",
-    "near6eok": false,
-    "costs": 9926000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 133000000,
-        "monthly_payment": 673891,
-        "cash_needed": 66926000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 133000000,
-        "monthly_payment": 705867,
-        "cash_needed": 66926000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 13,300만원 / 월상환 67만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 13,300만원 / 월상환 70만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
     "articleNo": "2637954010",
     "scope": "남양주기타",
     "region": "남양주기타",
@@ -48690,56 +48590,6 @@
     ]
   },
   {
-    "articleNo": "2635120807",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "양지",
-    "area": 84.0,
-    "price": 190000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/8571",
-    "near6eok": false,
-    "costs": 9926000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 133000000,
-        "monthly_payment": 673891,
-        "cash_needed": 66926000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 133000000,
-        "monthly_payment": 705867,
-        "cash_needed": 66926000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 13,300만원 / 월상환 67만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 13,300만원 / 월상환 70만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
     "articleNo": "2635027518",
     "scope": "남양주기타",
     "region": "남양주기타",
@@ -48774,56 +48624,6 @@
       {
         "code": "loan_보금자리론(고정)",
         "text": "보금자리론(고정): 한도 기준 대출 15,050만원 / 월상환 79만원 / 필요 자기자본 7,481만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
-    "articleNo": "2634915020",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "양지",
-    "area": 84.0,
-    "price": 190000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/8571",
-    "near6eok": false,
-    "costs": 9926000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 133000000,
-        "monthly_payment": 673891,
-        "cash_needed": 66926000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 133000000,
-        "monthly_payment": 705867,
-        "cash_needed": 66926000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 13,300만원 / 월상환 67만원 / 필요 자기자본 6,692만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 13,300만원 / 월상환 70만원 / 필요 자기자본 6,692만원"
       },
       {
         "code": "unregulated",
@@ -61024,6 +60824,56 @@
       {
         "code": "loan_보금자리론(고정)",
         "text": "보금자리론(고정): 한도 기준 대출 15,400만원 / 월상환 81만원 / 필요 자기자본 7,638만원"
+      },
+      {
+        "code": "unregulated",
+        "text": "비규제 지역"
+      },
+      {
+        "code": "policy_loan",
+        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
+      },
+      {
+        "code": "fixed_rate",
+        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
+      }
+    ]
+  },
+  {
+    "articleNo": "2639500380",
+    "scope": "남양주기타",
+    "region": "남양주기타",
+    "complexName": "진주8차",
+    "area": 84.0,
+    "price": 200000000,
+    "tradeType": "매매",
+    "sourceUrl": "https://new.land.naver.com/complexes/14502",
+    "near6eok": false,
+    "costs": 10080000,
+    "finance": [
+      {
+        "product": "일반 주택담보대출(변동)",
+        "rate": 0.045,
+        "loan": 140000000,
+        "monthly_payment": 709359,
+        "cash_needed": 70080000
+      },
+      {
+        "product": "보금자리론(고정)",
+        "rate": 0.049,
+        "loan": 140000000,
+        "monthly_payment": 743017,
+        "cash_needed": 70080000
+      }
+    ],
+    "actionItems": [
+      {
+        "code": "loan_일반 주택담보대출(변동)",
+        "text": "일반 주택담보대출(변동): 한도 기준 대출 14,000만원 / 월상환 70만원 / 필요 자기자본 7,008만원"
+      },
+      {
+        "code": "loan_보금자리론(고정)",
+        "text": "보금자리론(고정): 한도 기준 대출 14,000만원 / 월상환 74만원 / 필요 자기자본 7,008만원"
       },
       {
         "code": "unregulated",
@@ -121777,35 +121627,35 @@
     "region": "남양주기타",
     "complexName": "장현주공1단지",
     "area": 84.0,
-    "price": 345000000,
+    "price": 320000000,
     "tradeType": "매매",
     "sourceUrl": "https://new.land.naver.com/complexes/14506",
     "near6eok": false,
-    "costs": 12313000,
+    "costs": 11928000,
     "finance": [
       {
         "product": "일반 주택담보대출(변동)",
         "rate": 0.045,
-        "loan": 241500000,
-        "monthly_payment": 1223645,
-        "cash_needed": 115813000
+        "loan": 224000000,
+        "monthly_payment": 1134975,
+        "cash_needed": 107928000
       },
       {
         "product": "보금자리론(고정)",
         "rate": 0.049,
-        "loan": 241500000,
-        "monthly_payment": 1281705,
-        "cash_needed": 115813000
+        "loan": 224000000,
+        "monthly_payment": 1188828,
+        "cash_needed": 107928000
       }
     ],
     "actionItems": [
       {
         "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 24,150만원 / 월상환 122만원 / 필요 자기자본 11,581만원"
+        "text": "일반 주택담보대출(변동): 한도 기준 대출 22,400만원 / 월상환 113만원 / 필요 자기자본 10,792만원"
       },
       {
         "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 24,150만원 / 월상환 128만원 / 필요 자기자본 11,581만원"
+        "text": "보금자리론(고정): 한도 기준 대출 22,400만원 / 월상환 118만원 / 필요 자기자본 10,792만원"
       },
       {
         "code": "unregulated",
@@ -130772,6 +130622,106 @@
     ]
   },
   {
+    "articleNo": "2639500482",
+    "scope": "남양주기타",
+    "region": "남양주기타",
+    "complexName": "진접스타힐스",
+    "area": 84.0,
+    "price": 410000000,
+    "tradeType": "매매",
+    "sourceUrl": "https://new.land.naver.com/complexes/126061",
+    "near6eok": false,
+    "costs": 13314000,
+    "finance": [
+      {
+        "product": "일반 주택담보대출(변동)",
+        "rate": 0.045,
+        "loan": 287000000,
+        "monthly_payment": 1454187,
+        "cash_needed": 136314000
+      },
+      {
+        "product": "보금자리론(고정)",
+        "rate": 0.049,
+        "loan": 287000000,
+        "monthly_payment": 1523186,
+        "cash_needed": 136314000
+      }
+    ],
+    "actionItems": [
+      {
+        "code": "loan_일반 주택담보대출(변동)",
+        "text": "일반 주택담보대출(변동): 한도 기준 대출 28,700만원 / 월상환 145만원 / 필요 자기자본 13,631만원"
+      },
+      {
+        "code": "loan_보금자리론(고정)",
+        "text": "보금자리론(고정): 한도 기준 대출 28,700만원 / 월상환 152만원 / 필요 자기자본 13,631만원"
+      },
+      {
+        "code": "unregulated",
+        "text": "비규제 지역"
+      },
+      {
+        "code": "policy_loan",
+        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
+      },
+      {
+        "code": "fixed_rate",
+        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
+      }
+    ]
+  },
+  {
+    "articleNo": "2639500290",
+    "scope": "남양주기타",
+    "region": "남양주기타",
+    "complexName": "진접스타힐스",
+    "area": 84.0,
+    "price": 410000000,
+    "tradeType": "매매",
+    "sourceUrl": "https://new.land.naver.com/complexes/126061",
+    "near6eok": false,
+    "costs": 13314000,
+    "finance": [
+      {
+        "product": "일반 주택담보대출(변동)",
+        "rate": 0.045,
+        "loan": 287000000,
+        "monthly_payment": 1454187,
+        "cash_needed": 136314000
+      },
+      {
+        "product": "보금자리론(고정)",
+        "rate": 0.049,
+        "loan": 287000000,
+        "monthly_payment": 1523186,
+        "cash_needed": 136314000
+      }
+    ],
+    "actionItems": [
+      {
+        "code": "loan_일반 주택담보대출(변동)",
+        "text": "일반 주택담보대출(변동): 한도 기준 대출 28,700만원 / 월상환 145만원 / 필요 자기자본 13,631만원"
+      },
+      {
+        "code": "loan_보금자리론(고정)",
+        "text": "보금자리론(고정): 한도 기준 대출 28,700만원 / 월상환 152만원 / 필요 자기자본 13,631만원"
+      },
+      {
+        "code": "unregulated",
+        "text": "비규제 지역"
+      },
+      {
+        "code": "policy_loan",
+        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
+      },
+      {
+        "code": "fixed_rate",
+        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
+      }
+    ]
+  },
+  {
     "articleNo": "2639464590",
     "scope": "남양주기타",
     "region": "남양주기타",
@@ -130922,56 +130872,6 @@
     ]
   },
   {
-    "articleNo": "2639250816",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "진접스타힐스",
-    "area": 84.0,
-    "price": 420000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/126061",
-    "near6eok": false,
-    "costs": 13468000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 294000000,
-        "monthly_payment": 1489655,
-        "cash_needed": 139468000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 294000000,
-        "monthly_payment": 1560337,
-        "cash_needed": 139468000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 29,400만원 / 월상환 148만원 / 필요 자기자본 13,946만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 29,400만원 / 월상환 156만원 / 필요 자기자본 13,946만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
     "articleNo": "2639409924",
     "scope": "남양주기타",
     "region": "남양주기타",
@@ -131056,56 +130956,6 @@
       {
         "code": "loan_보금자리론(고정)",
         "text": "보금자리론(고정): 한도 기준 대출 33,600만원 / 월상환 178만원 / 필요 자기자본 15,839만원"
-      },
-      {
-        "code": "unregulated",
-        "text": "비규제 지역"
-      },
-      {
-        "code": "policy_loan",
-        "text": "정책대출 이용 가능: 보금자리론(고정) (위 비교 참조)"
-      },
-      {
-        "code": "fixed_rate",
-        "text": "고정금리(보금자리론) 검토 — 스트레스 DSR 미적용으로 실거주에 유리"
-      }
-    ]
-  },
-  {
-    "articleNo": "2637935262",
-    "scope": "남양주기타",
-    "region": "남양주기타",
-    "complexName": "진접스타힐스",
-    "area": 84.0,
-    "price": 420000000,
-    "tradeType": "매매",
-    "sourceUrl": "https://new.land.naver.com/complexes/126061",
-    "near6eok": false,
-    "costs": 13468000,
-    "finance": [
-      {
-        "product": "일반 주택담보대출(변동)",
-        "rate": 0.045,
-        "loan": 294000000,
-        "monthly_payment": 1489655,
-        "cash_needed": 139468000
-      },
-      {
-        "product": "보금자리론(고정)",
-        "rate": 0.049,
-        "loan": 294000000,
-        "monthly_payment": 1560337,
-        "cash_needed": 139468000
-      }
-    ],
-    "actionItems": [
-      {
-        "code": "loan_일반 주택담보대출(변동)",
-        "text": "일반 주택담보대출(변동): 한도 기준 대출 29,400만원 / 월상환 148만원 / 필요 자기자본 13,946만원"
-      },
-      {
-        "code": "loan_보금자리론(고정)",
-        "text": "보금자리론(고정): 한도 기준 대출 29,400만원 / 월상환 156만원 / 필요 자기자본 13,946만원"
       },
       {
         "code": "unregulated",
