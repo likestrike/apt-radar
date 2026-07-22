@@ -6,18 +6,41 @@
 <div id="stale" class="stale">이 데이터는 오래되었을 수 있음(마지막 수집 실패/지연).</div>
 <p id="updated"></p>
 
-<div class="tabs" id="tabs">
-  <div class="tab active" data-scope="노원구">노원</div>
-  <div class="tab" data-scope="동대문구">동대문(회기)</div>
-  <div class="tab" data-scope="다산동">다산</div>
-  <div class="tab" data-scope="남양주기타">남양주</div>
-  <div class="tab" data-scope="하남시">하남</div>
+<div class="view-tabs" id="viewTabs">
+  <div class="view-tab active" data-view="listings">매물</div>
+  <div class="view-tab" data-view="actions">액션 아이템</div>
 </div>
-<div id="listings"></div>
 
-<h2>LH 공공분양</h2>
-<p id="lhFailed" class="stale" style="display:none;">LH 공고 수집 실패 — 목록이 최신이 아닐 수 있음</p>
-<div id="lh"></div>
+<div id="view-listings">
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-scope="노원구">노원</div>
+    <div class="tab" data-scope="동대문구">동대문(회기)</div>
+    <div class="tab" data-scope="다산동">다산</div>
+    <div class="tab" data-scope="남양주기타">남양주</div>
+    <div class="tab" data-scope="하남시">하남</div>
+  </div>
+
+  <div class="listbar">
+    <p id="summaryBar" class="summary-bar"></p>
+    <div class="sort-toggle" id="sortToggle">
+      <button type="button" data-sort="default" class="active">기본순</button>
+      <button type="button" data-sort="price_desc">가격 높은순</button>
+      <button type="button" data-sort="price_asc">가격 낮은순</button>
+    </div>
+  </div>
+
+  <div id="listings"></div>
+  <div class="pagination" id="pagination"></div>
+</div>
+
+<div id="view-actions" style="display:none">
+  <h2>청약 알림</h2>
+  <div id="lhAlerts"></div>
+
+  <h2>꼭 봐야 할 매물 TOP 10</h2>
+  <div id="recommendations"></div>
+  <p class="disclaimer">통근은 노선 기반 추정이며 학군 데이터는 미반영 — 방문 확인 필수</p>
+</div>
 
 <h2>금리 시나리오 계산기 (브라우저 메모리만, 저장·전송 없음)</h2>
 <label>금리 <input id="rate" type="range" min="3" max="8" step="0.1" value="4.5" /><span id="rateVal">4.5%</span></label><br />
@@ -35,25 +58,180 @@ async function loadJSON(path) {
 
 function fmt(won) { return Math.round(won / 10000).toLocaleString() + "만원"; }
 
-// esc()/safeUrl()은 calc.js가 제공(module.exports 및 전역 함수 선언 겸용).
+// esc()/safeUrl()/fmtEok()/toPyeong()/sortListings()는 calc.js가 제공(module.exports 및
+// 전역 함수 선언 겸용).
+
+// 준공연도(YYYY)·세대수를 "1995년 · 2,433세대" 형태로 합친다. 값이 없으면 해당 항목을
+// 생략하고, 둘 다 없으면 빈 문자열을 반환한다(카드 헤더에서 조건부로만 붙인다).
+function complexMetaLabel(l) {
+  const parts = [];
+  const ymd = l.useApproveYmd;
+  if (ymd && String(ymd).length >= 4) {
+    parts.push(`${String(ymd).slice(0, 4)}년`);
+  }
+  if (typeof l.households === "number") {
+    parts.push(`${l.households.toLocaleString()}세대`);
+  }
+  return parts.join(" · ");
+}
+
+// LH 날짜("YYYY.MM.DD")를 "M월 D일"로 표기(선행 0 제거).
+function formatMonthDay(dateStr) {
+  if (!dateStr) return "?";
+  const parts = String(dateStr).split(".");
+  if (parts.length < 3) return "?";
+  const m = parseInt(parts[1], 10);
+  const d = parseInt(parts[2], 10);
+  if (Number.isNaN(m) || Number.isNaN(d)) return "?";
+  return `${m}월 ${d}일`;
+}
+
+const REGION_ORDER = ["노원구", "동대문구", "다산동", "남양주기타", "하남시"];
+const REGION_LABELS = {
+  "노원구": "노원", "동대문구": "동대문", "다산동": "다산",
+  "남양주기타": "남양주", "하남시": "하남",
+};
+const PAGE_SIZE = 5;
+
+let listings = [];
+let lh = [];
+let meta = {};
+let recommendations = [];
+let newSet = new Set();
+let priceChangedMap = new Map();
+let currentScope = "노원구";
+let currentPage = 1;
+let currentSort = "default";
+
+function scopeListings(scope) {
+  return sortListings(listings.filter((l) => l.scope === scope), currentSort);
+}
+
+function renderSummaryBar() {
+  const counts = {};
+  REGION_ORDER.forEach((s) => { counts[s] = 0; });
+  listings.forEach((l) => { counts[l.scope] = (counts[l.scope] || 0) + 1; });
+  const parts = REGION_ORDER.map((s) => `${REGION_LABELS[s]} ${(counts[s] || 0).toLocaleString()}`);
+  document.getElementById("summaryBar").textContent =
+    `전체 ${listings.length.toLocaleString()}건 · ` + parts.join(" · ");
+}
+
+function renderCard(l) {
+  const details = document.createElement("details");
+  details.className = "card";
+  const badges = [];
+  if (newSet.has(l.articleNo)) {
+    badges.push(`<span class="badge badge-new">신규</span>`);
+  }
+  const pc = priceChangedMap.get(l.articleNo);
+  if (pc) {
+    badges.push(
+      `<span class="badge badge-price">가격변동 ${esc(fmtEok(pc.before))}→${esc(fmtEok(pc.after))}</span>`
+    );
+  }
+  const pyeong = toPyeong(l.area);
+  const metaLabel = complexMetaLabel(l);
+  const fin = l.finance.map((f) =>
+    `${esc(f.product)}: 최대 대출(규제 한도 기준) ${esc(fmtEok(f.loan))}원 · 월상환 ${fmt(f.monthly_payment)} · 필요 자기자본 ${esc(fmtEok(f.cash_needed))}원`
+  ).join("<br />");
+  const acts = (l.actionItems || []).map((a) => esc(a.text)).join("<br />");
+
+  details.innerHTML = `
+    <summary>${badges.join(" ")}
+      <b>${esc(l.complexName)}</b> ${esc(fmtEok(l.price))}원
+      · ${esc(l.area)}㎡ (약 ${pyeong}평)
+      ${metaLabel ? `· ${esc(metaLabel)}` : ""}
+      · <a href="${esc(safeUrl(l.sourceUrl))}" target="_blank" rel="noopener">매물 보기</a>
+    </summary>
+    <div class="card-detail">
+      ${fin}<br />${acts}
+      <br /><small>개인 소득 반영 한도는 아래 계산기에서 확인</small>
+    </div>`;
+  return details;
+}
+
+function renderPagination(totalPages) {
+  const el = document.getElementById("pagination");
+  el.innerHTML = `
+    <button type="button" id="prevPage" ${currentPage <= 1 ? "disabled" : ""}>◀ 이전</button>
+    <span>${currentPage} / ${totalPages}</span>
+    <button type="button" id="nextPage" ${currentPage >= totalPages ? "disabled" : ""}>다음 ▶</button>`;
+  document.getElementById("prevPage").addEventListener("click", () => renderScope(currentScope, currentPage - 1));
+  document.getElementById("nextPage").addEventListener("click", () => renderScope(currentScope, currentPage + 1));
+}
+
+function renderScope(scope, page) {
+  currentScope = scope;
+  const all = scopeListings(scope);
+  const totalPages = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+  currentPage = Math.min(Math.max(1, page), totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const box = document.getElementById("listings");
+  box.innerHTML = "";
+  all.slice(start, start + PAGE_SIZE).forEach((l) => box.appendChild(renderCard(l)));
+  renderPagination(totalPages);
+}
+
+function renderLhAlerts() {
+  const box = document.getElementById("lhAlerts");
+  if (meta.lh_failed) {
+    box.innerHTML = `<p class="stale" style="display:block;">LH 공고 수집 실패 — 목록이 최신이 아닐 수 있음</p>`;
+    return;
+  }
+  if (!lh || lh.length === 0) {
+    box.innerHTML = `<p>현재 관심지역 청약 공고 없음</p>`;
+    return;
+  }
+  box.innerHTML = lh.map((n) => {
+    const dday = n.dday;
+    const urgent = typeof dday === "number" && dday <= 7;
+    const ddayText = typeof dday === "number" ? `D-${dday}` : "D-?";
+    return `<div class="alert-box${urgent ? " alert-urgent" : ""}">
+      📅 <b>${esc(formatMonthDay(n.period_end))}</b> 접수 마감 — ${esc(n.name)} (게시 ${esc(formatMonthDay(n.period_start))})
+      <span class="badge ${urgent ? "badge-urgent" : "badge-dday"}">${esc(ddayText)}</span>
+      <span class="badge badge-action">청약 넣어야 함</span>
+      <br /><a href="${esc(safeUrl(n.detail_url))}" target="_blank" rel="noopener">공고 상세</a>
+    </div>`;
+  }).join("");
+}
+
+function renderRecommendations() {
+  const box = document.getElementById("recommendations");
+  if (!recommendations || recommendations.length === 0) {
+    box.innerHTML = `<p>추천 매물 데이터가 아직 없습니다(다음 수집 회차에 반영됩니다).</p>`;
+    return;
+  }
+  box.innerHTML = recommendations.map((r, i) => `
+    <div class="card rec-card">
+      <b>${i + 1}위</b> <b>${esc(r.complexName)}</b> ${esc(fmtEok(r.price))}원
+      · ${esc(r.area)}㎡ · ${esc(r.scope)}
+      <br />${(r.reasons || []).map((x) => `<span class="badge badge-reason">${esc(x)}</span>`).join(" ")}
+      <br /><span class="badge badge-action">매매 검토</span>
+      <a href="${esc(safeUrl(r.sourceUrl))}" target="_blank" rel="noopener">매물 보기</a>
+    </div>`
+  ).join("");
+}
 
 async function main() {
   const staleEl = document.getElementById("stale");
 
   // 일부 실패해도 성공분은 렌더한다 — Promise.all 대신 allSettled.
-  const [listingsResult, lhResult, metaResult, eventsResult] = await Promise.allSettled([
+  const [listingsResult, lhResult, metaResult, eventsResult, recsResult] = await Promise.allSettled([
     loadJSON("data/listings.json"),
     loadJSON("data/lh.json"),
     loadJSON("data/meta.json"),
     loadJSON("data/events/latest.json"),
+    loadJSON("data/recommendations.json"),
   ]);
 
-  const listings = listingsResult.status === "fulfilled" ? listingsResult.value : [];
-  const lh = lhResult.status === "fulfilled" ? lhResult.value : [];
-  const meta = metaResult.status === "fulfilled" ? metaResult.value : {};
+  listings = listingsResult.status === "fulfilled" ? listingsResult.value : [];
+  lh = lhResult.status === "fulfilled" ? lhResult.value : [];
+  meta = metaResult.status === "fulfilled" ? metaResult.value : {};
   const events = eventsResult.status === "fulfilled"
     ? eventsResult.value
     : { new: [], priceChanged: [], removed: [] };
+  // recommendations.json은 비치명 선택 데이터 — 실패해도 나머지는 정상 렌더.
+  recommendations = recsResult.status === "fulfilled" ? recsResult.value : [];
 
   const allFailed = [listingsResult, lhResult, metaResult, eventsResult]
     .every((r) => r.status === "rejected");
@@ -72,55 +250,42 @@ async function main() {
     staleEl.style.display = "block";
   }
 
-  // LH 실패는 네이버/전체 오래됨 배너와 별개 표시(meta.lh_failed) — 정적 문자열, esc 불필요.
-  if (meta.lh_failed) {
-    document.getElementById("lhFailed").style.display = "block";
-  }
-
   // events/latest.json 실패는 비치명 — 배지 없이 나머지는 정상 렌더.
-  const newSet = new Set(events.new || []);
-  const priceChangedMap = new Map((events.priceChanged || []).map((e) => [e.articleNo, e]));
+  newSet = new Set(events.new || []);
+  priceChangedMap = new Map((events.priceChanged || []).map((e) => [e.articleNo, e]));
 
-  function renderScope(scope) {
-    const box = document.getElementById("listings");
-    box.innerHTML = "";
-    listings.filter((l) => l.scope === scope).forEach((l) => {
-      const div = document.createElement("div");
-      div.className = "card";
-      const badges = [];
-      if (newSet.has(l.articleNo)) {
-        badges.push(`<span class="badge badge-new">신규</span>`);
-      }
-      const pc = priceChangedMap.get(l.articleNo);
-      if (pc) {
-        badges.push(
-          `<span class="badge badge-price">가격변동 ${esc(fmt(pc.before))}→${esc(fmt(pc.after))}</span>`
-        );
-      }
-      const fin = l.finance.map((f) =>
-        `${esc(f.product)}: 최대 대출(규제 한도 기준) ${fmt(f.loan)} · 월상환 ${fmt(f.monthly_payment)} · 필요 자기자본 ${fmt(f.cash_needed)}`
-      ).join("<br />");
-      const acts = (l.actionItems || []).map((a) => esc(a.text)).join("<br />");
-      div.innerHTML = `${badges.join(" ")}<b>${esc(l.complexName)}</b> ${fmt(l.price)} (${esc(l.area)}㎡)
-        <a href="${esc(safeUrl(l.sourceUrl))}" target="_blank" rel="noopener">원본</a><br />${fin}<br />${acts}
-        <br /><small>개인 소득 반영 한도는 아래 계산기에서 확인</small>`;
-      box.appendChild(div);
-    });
-  }
-
-  document.getElementById("lh").innerHTML = lh.map((n) =>
-    `<div class="card"><b>${esc(n.name)}</b> D-${esc(n.dday ?? "?")}
-     <a href="${esc(safeUrl(n.detail_url))}" target="_blank" rel="noopener">공고</a></div>`
-  ).join("");
-
+  renderSummaryBar();
   document.querySelectorAll(".tab").forEach((tab) => {
     tab.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
-      renderScope(tab.dataset.scope);
+      renderScope(tab.dataset.scope, 1);
     });
   });
-  renderScope("노원구");
+  document.querySelectorAll(".sort-toggle button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".sort-toggle button").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentSort = btn.dataset.sort;
+      renderScope(currentScope, 1);
+    });
+  });
+  renderScope("노원구", 1);
+
+  // 상위 뷰 전환([매물] [액션 아이템]) — 지역 탭과는 독립적인 별도 상태.
+  document.querySelectorAll(".view-tab").forEach((vt) => {
+    vt.addEventListener("click", () => {
+      document.querySelectorAll(".view-tab").forEach((v) => v.classList.remove("active"));
+      vt.classList.add("active");
+      const view = vt.dataset.view;
+      document.getElementById("view-listings").style.display = view === "listings" ? "" : "none";
+      document.getElementById("view-actions").style.display = view === "actions" ? "" : "none";
+    });
+  });
+
+  // LH 실패는 네이버/전체 오래됨 배너와 별개 표시(meta.lh_failed) — renderLhAlerts 내부에서 처리.
+  renderLhAlerts();
+  renderRecommendations();
 
   function recalc() {
     const rate = parseFloat(document.getElementById("rate").value) / 100;
@@ -134,7 +299,8 @@ async function main() {
       return;
     }
     const r = renderScenario(income, rate, price, 0.70);
-    let out = `필요 대출 ${fmt(r.loan)} · 월상환 ${fmt(r.monthlyPayment)}`;
+    // 대출액·필요 자기자본은 카드와 표기 통일(fmtEok, 억 단위) — 월상환만 만원(fmt) 유지.
+    let out = `필요 대출 ${fmtEok(r.loan)}원 · 월상환 ${fmt(r.monthlyPayment)}`;
 
     // 자기자본 입력이 있을 때만 여유/부족 한 줄 추가(브라우저 메모리만, 저장·전송 없음).
     const equityRaw = document.getElementById("equity").value;
@@ -143,7 +309,7 @@ async function main() {
       if (!Number.isNaN(equity)) {
         const gap = equity - r.cashNeeded;
         const label = gap >= 0 ? "여유" : "부족";
-        out += `<br />자기자본 대비: ${label} ${fmt(Math.abs(gap))}`;
+        out += `<br />자기자본 대비: ${label} ${fmtEok(Math.abs(gap))}원`;
       }
     }
     document.getElementById("calcOut").innerHTML = out;
