@@ -1,142 +1,153 @@
 [
- {
-  "articleNo": "2639339667",
-  "complexName": "공릉동비발디캐슬",
-  "scope": "노원구",
-  "price": 520000000,
-  "area": 83.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/128563",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2636538566",
-  "complexName": "라메즈",
-  "scope": "노원구",
-  "price": 520000000,
-  "area": 83.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/22829",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2634067096",
-  "complexName": "하늘공원",
-  "scope": "노원구",
-  "price": 550000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/24779",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2638637373",
-  "complexName": "한진",
-  "scope": "노원구",
-  "price": 550000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/104663",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2639388834",
-  "complexName": "한진",
-  "scope": "노원구",
-  "price": 550000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/104663",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2635799127",
-  "complexName": "한진",
-  "scope": "노원구",
-  "price": 550000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/104663",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2633614951",
-  "complexName": "한진",
-  "scope": "노원구",
-  "price": 550000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/104663",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2638502702",
-  "complexName": "보람그린",
-  "scope": "노원구",
-  "price": 500000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/11227",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2636863674",
-  "complexName": "보람그린",
-  "scope": "노원구",
-  "price": 500000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/11227",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- },
- {
-  "articleNo": "2638418797",
-  "complexName": "보람그린",
-  "scope": "노원구",
-  "price": 500000000,
-  "area": 84.0,
-  "sourceUrl": "https://new.land.naver.com/complexes/11227",
-  "score": 120,
-  "reasons": [
-   "7호선 직결·강남구청역 환승 0~1회",
-   "안전권 가격(5.5억 이하)",
-   "84㎡"
-  ]
- }
+  {
+    "articleNo": "2638586568",
+    "complexName": "북부현대",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/215",
+    "score": 130,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "가격 인하"
+    ]
+  },
+  {
+    "articleNo": "2637820982",
+    "complexName": "희락",
+    "scope": "노원구",
+    "price": 520000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/3251",
+    "score": 130,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "가격 인하"
+    ]
+  },
+  {
+    "articleNo": "2638889695",
+    "complexName": "청암3단지",
+    "scope": "노원구",
+    "price": 540000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/14198",
+    "score": 130,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "가격 인하"
+    ]
+  },
+  {
+    "articleNo": "2640167927",
+    "complexName": "하늘공원",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/24779",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  },
+  {
+    "articleNo": "2641424331",
+    "complexName": "보람그린",
+    "scope": "노원구",
+    "price": 500000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/11227",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  },
+  {
+    "articleNo": "2641502424",
+    "complexName": "북부현대",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/215",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  },
+  {
+    "articleNo": "2636890920",
+    "complexName": "불암현대",
+    "scope": "노원구",
+    "price": 520000000,
+    "area": 59.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/1103",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "59㎡",
+      "대단지 826세대",
+      "가격 인하"
+    ]
+  },
+  {
+    "articleNo": "2641434589",
+    "complexName": "희락",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/3251",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  },
+  {
+    "articleNo": "2641338757",
+    "complexName": "희락",
+    "scope": "노원구",
+    "price": 520000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/3251",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  },
+  {
+    "articleNo": "2642055374",
+    "complexName": "청암3단지",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/14198",
+    "score": 125,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡",
+      "신규"
+    ]
+  }
 ]
