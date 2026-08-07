@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T09:48:49.063260+09:00",
+  "updated_at": "2026-08-07T13:45:59.055009+09:00",
   "collected_scopes": [
     "남양주기타",
     "노원구",
@@ -12,8 +12,8 @@
   "stale": false,
   "lh_failed": false,
   "counts": {
-    "new": 585,
-    "price_changed": 7,
+    "new": 128,
+    "price_changed": 10,
     "lh": 0
   }
 }
