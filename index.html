@@ -15,6 +15,7 @@
   <div class="tabs" id="tabs">
     <div class="tab active" data-scope="노원구">노원</div>
     <div class="tab" data-scope="동대문구">동대문(회기)</div>
+    <div class="tab" data-scope="중랑구">중랑</div>
     <div class="tab" data-scope="다산동">다산</div>
     <div class="tab" data-scope="남양주기타">남양주</div>
     <div class="tab" data-scope="하남시">하남</div>
@@ -86,9 +87,9 @@ function formatMonthDay(dateStr) {
   return `${m}월 ${d}일`;
 }
 
-const REGION_ORDER = ["노원구", "동대문구", "다산동", "남양주기타", "하남시"];
+const REGION_ORDER = ["노원구", "동대문구", "중랑구", "다산동", "남양주기타", "하남시"];
 const REGION_LABELS = {
-  "노원구": "노원", "동대문구": "동대문", "다산동": "다산",
+  "노원구": "노원", "동대문구": "동대문", "중랑구": "중랑", "다산동": "다산",
   "남양주기타": "남양주", "하남시": "하남",
 };
 const PAGE_SIZE = 5;

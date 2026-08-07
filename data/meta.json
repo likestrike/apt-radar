@@ -1,17 +1,18 @@
 {
-  "updated_at": "2026-08-06T14:38:07.540206+09:00",
+  "updated_at": "2026-08-07T09:48:49.063260+09:00",
   "collected_scopes": [
     "남양주기타",
     "노원구",
     "다산동",
     "동대문구",
+    "중랑구",
     "하남시"
   ],
   "blocked": false,
   "stale": false,
   "lh_failed": false,
   "counts": {
-    "new": 112,
+    "new": 585,
     "price_changed": 7,
     "lh": 0
   }
