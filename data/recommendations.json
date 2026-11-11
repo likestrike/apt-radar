@@ -1,84 +1,24 @@
 [
   {
-    "articleNo": "2659880810",
-    "complexName": "월계극동",
+    "articleNo": "2660918074",
+    "complexName": "한신월드",
     "scope": "노원구",
-    "price": 540000000,
-    "area": 80.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/216",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0~1회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2659638488",
-    "complexName": "청암3단지",
-    "scope": "노원구",
-    "price": 540000000,
-    "area": 84.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/14198",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0~1회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2659775101",
-    "complexName": "삼성씨티빌",
-    "scope": "노원구",
-    "price": 550000000,
-    "area": 84.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/26630",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0~1회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2660111832",
-    "complexName": "삼성씨티빌",
-    "scope": "노원구",
-    "price": 550000000,
-    "area": 84.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/26630",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0~1회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2660413288",
-    "complexName": "면목진로",
-    "scope": "중랑구",
     "price": 500000000,
-    "area": 82.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/8825",
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/119470",
     "score": 125,
     "reasons": [
-      "7호선 직결·강남구청역 환승 0회",
+      "7호선 직결·강남구청역 환승 0~1회",
       "안전권 가격(5.5억 이하)",
       "84㎡",
       "신규"
     ]
   },
   {
-    "articleNo": "2659667460",
+    "articleNo": "2661044395",
     "complexName": "면목진로",
     "scope": "중랑구",
-    "price": 450000000,
+    "price": 455000000,
     "area": 82.0,
     "sourceUrl": "https://new.land.naver.com/complexes/8825",
     "score": 125,
@@ -90,10 +30,10 @@
     ]
   },
   {
-    "articleNo": "2660110387",
+    "articleNo": "2660488366",
     "complexName": "동아불암",
     "scope": "노원구",
-    "price": 530000000,
+    "price": 550000000,
     "area": 59.0,
     "sourceUrl": "https://new.land.naver.com/complexes/1101",
     "score": 120,
@@ -140,6 +80,62 @@
     "price": 500000000,
     "area": 84.0,
     "sourceUrl": "https://new.land.naver.com/complexes/11227",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2656554891",
+    "complexName": "상계신동아",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/190",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2657090039",
+    "complexName": "수락한신(1278)",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 84.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/17138",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2659880810",
+    "complexName": "월계극동",
+    "scope": "노원구",
+    "price": 540000000,
+    "area": 80.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/216",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2659406470",
+    "complexName": "월계극동",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 80.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/216",
     "score": 120,
     "reasons": [
       "7호선 직결·강남구청역 환승 0~1회",
