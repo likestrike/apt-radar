@@ -1,66 +1,37 @@
 [
   {
-    "articleNo": "2660918074",
-    "complexName": "한신월드",
-    "scope": "노원구",
-    "price": 500000000,
-    "area": 84.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/119470",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0~1회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2661044395",
-    "complexName": "면목진로",
-    "scope": "중랑구",
-    "price": 455000000,
-    "area": 82.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/8825",
-    "score": 125,
-    "reasons": [
-      "7호선 직결·강남구청역 환승 0회",
-      "안전권 가격(5.5억 이하)",
-      "84㎡",
-      "신규"
-    ]
-  },
-  {
-    "articleNo": "2660488366",
-    "complexName": "동아불암",
+    "articleNo": "2659482489",
+    "complexName": "벽산",
     "scope": "노원구",
     "price": 550000000,
     "area": 59.0,
-    "sourceUrl": "https://new.land.naver.com/complexes/1101",
-    "score": 120,
+    "sourceUrl": "https://new.land.naver.com/complexes/184",
+    "score": 125,
     "reasons": [
       "7호선 직결·강남구청역 환승 0~1회",
       "안전권 가격(5.5억 이하)",
       "59㎡",
-      "대단지 673세대",
+      "대단지 1,590세대",
       "신규"
     ]
   },
   {
-    "articleNo": "2659144000",
+    "articleNo": "2661267883",
     "complexName": "보람그린",
     "scope": "노원구",
     "price": 500000000,
     "area": 84.0,
     "sourceUrl": "https://new.land.naver.com/complexes/11227",
-    "score": 120,
+    "score": 125,
     "reasons": [
       "7호선 직결·강남구청역 환승 0~1회",
       "안전권 가격(5.5억 이하)",
-      "84㎡"
+      "84㎡",
+      "신규"
     ]
   },
   {
-    "articleNo": "2659031998",
+    "articleNo": "2659144000",
     "complexName": "보람그린",
     "scope": "노원구",
     "price": 500000000,
@@ -141,6 +112,36 @@
       "7호선 직결·강남구청역 환승 0~1회",
       "안전권 가격(5.5억 이하)",
       "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2658387890",
+    "complexName": "월계극동",
+    "scope": "노원구",
+    "price": 550000000,
+    "area": 80.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/216",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "84㎡"
+    ]
+  },
+  {
+    "articleNo": "2661212809",
+    "complexName": "청백4단지",
+    "scope": "노원구",
+    "price": 520000000,
+    "area": 59.0,
+    "sourceUrl": "https://new.land.naver.com/complexes/225",
+    "score": 120,
+    "reasons": [
+      "7호선 직결·강남구청역 환승 0~1회",
+      "안전권 가격(5.5억 이하)",
+      "59㎡",
+      "대단지 520세대",
+      "신규"
     ]
   }
 ]
